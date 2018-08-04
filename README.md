@@ -1,1 +1,1 @@
-# browserizr-php
+# Browserizr PHP
