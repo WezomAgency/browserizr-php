@@ -86,10 +86,11 @@ class Browserizr
 
     /**
      * Checkout/re-checkout all detections
+     * @param string $custom_user_agent
      */
-    public static function detect()
+    public static function detect($custom_user_agent = null)
     {
-        self::$agent = $_SERVER['HTTP_USER_AGENT'] ?: '';
+        self::$agent = $custom_user_agent ?: $_SERVER['HTTP_USER_AGENT'] ?: '';
 
         self::$is_android = !!preg_match('/android/i', self::$agent);
         self::$is_android3 = !!preg_match('/android 3/i', self::$agent);
