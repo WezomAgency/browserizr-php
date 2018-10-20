@@ -4,7 +4,7 @@
 [![WezomAgency](https://img.shields.io/badge/composer-require-orange.svg)](https://packagist.org/packages/wezom-agency/browserizr)
 [![WezomAgency](https://img.shields.io/badge/wezom-agency-red.svg)](https://github.com/WezomAgency)
 
-> **Browserizr** is tiny library, that detects your browser and platform,  
+> **Browserizr** is tiny library, that detects your browser  
 > with testing `$_SERVER['HTTP_USER_AGENT']`.
 
 _that is PHP port of the JavaScript library [WezomAgency/Browserizr](https://github.com/WezomAgency/browserizr)  
