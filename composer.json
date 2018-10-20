@@ -11,8 +11,8 @@
     ],
     "require": {},
     "autoload": {
-        "psr-4": {
-            "WezomAgency\\Browserizr\\": "src/"
+        "psr-0": {
+            "WezomAgency\\Browserizr": "src/"
         }
     }
 }
