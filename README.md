@@ -20,6 +20,28 @@ composer require wezom-agency/browserizr
 
 ---
 
+## Initalize
+
+> _* since 2.x version_  
+> ___You must initialize the Browserizr before to use it___
+
+```php
+<?php
+
+// your app start code
+// ...
+use WezomAgency\Browserizr;
+
+// initialize Browserizr
+Browserizr::detect();
+
+// use Browserizr in your app
+// ...
+?>
+```
+
+---
+
 ## API
 
 ### List of built-in tests
