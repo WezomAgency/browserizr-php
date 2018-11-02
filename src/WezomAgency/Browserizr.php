@@ -136,6 +136,3 @@ class Browserizr
         self::$is_desktop = !self::$is_mobile;
     }
 }
-
-// initial checkout
-Browserizr::detect();
