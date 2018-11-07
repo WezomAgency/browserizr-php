@@ -335,11 +335,13 @@ class Browserizr
             $chromeAgent = !!preg_match('/ Chrome\/\d/', $this->getUserAgent());
             $this->is_chrome = (
                 $chromeAgent &&
-                !$this->isOpera() &&
-                !$this->isSafari() &&
-                !$this->isEdgeIOS() &&
-                !$this->isEdgeAndroid() &&
-                !$this->isEdgeIOS()
+                !(
+                    $this->isOpera() ||
+                    $this->isSafari() ||
+                    $this->isEdgeIOS() ||
+                    $this->isEdgeAndroid() ||
+                    $this->isEdgeIOS()
+                )
             );
         }
         return $this->is_chrome;
@@ -392,8 +394,10 @@ class Browserizr
         $classes = [];
         foreach ($tests as $test) {
             $key = 'is' . $test;
-            $prefix = $this->$key ? 'is-' : 'is-not-';
-            array_push($classes, $cssPrefix . $prefix . strtolower($test));
+            if (method_exists($this, $key)) {
+                $prefix = $this->$key() ? 'is-' : 'is-not-';
+                array_push($classes, $cssPrefix . $prefix . strtolower($test));
+            }
         }
 
         if ($toString) {
