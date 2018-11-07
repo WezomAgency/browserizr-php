@@ -394,7 +394,7 @@ class Browserizr
         $classes = [];
         foreach ($tests as $test) {
             $key = 'is' . $test;
-            if (property_exists($this, $key)) {
+            if (method_exists($this, $key)) {
                 $prefix = $this->$key() ? 'is-' : 'is-not-';
                 array_push($classes, $cssPrefix . $prefix . strtolower($test));
             }
