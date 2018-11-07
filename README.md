@@ -1,7 +1,8 @@
 # Browserizr PHP
 
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/dutchenkoOleg/node-w3c-validator/blob/master/LICENSE)
-[![WezomAgency](https://img.shields.io/badge/composer-require-orange.svg)](https://packagist.org/packages/wezom-agency/browserizr)
+[![composer](https://img.shields.io/badge/composer-require-orange.svg)](https://packagist.org/packages/wezom-agency/browserizr)
+[![npm](https://img.shields.io/badge/npm-install-orange.svg)](https://www.npmjs.com/package/browserizr)
 [![WezomAgency](https://img.shields.io/badge/wezom-agency-red.svg)](https://github.com/WezomAgency)
 
 > **Browserizr** is tiny library, that detects your browser  
@@ -20,25 +21,11 @@ composer require wezom-agency/browserizr
 
 ---
 
-## Initalize
+## Prev versions
 
-> _* since 2.x version_  
-> ___You must initialize the Browserizr before to use it___
+> _please read:_
 
-```php
-<?php
-
-// your app start code
-// ...
-use WezomAgency\Browserizr;
-
-// initialize Browserizr
-Browserizr::detect();
-
-// use Browserizr in your app
-// ...
-?>
-```
+- [old-versions/README-2.x.md](https://github.com/WezomAgency/browserizr-php/blob/master/old-versions/README-2.x.md)
 
 ---
 
@@ -46,33 +33,33 @@ Browserizr::detect();
 
 ### List of built-in tests
 
-1. `Browserizr::$is_android`
-1. `Browserizr::$is_android3`
-1. `Browserizr::$is_android4`
-1. `Browserizr::$is_android5`
-1. `Browserizr::$is_android6`
-1. `Browserizr::$is_android7`
-1. `Browserizr::$is_android8`
-1. `Browserizr::$is_blackberry`
-1. `Browserizr::$is_blackberry10`
-1. `Browserizr::$is_edge`
-1. `Browserizr::$is_edge_android`
-1. `Browserizr::$is_edge_ios`
-1. `Browserizr::$is_ie`
-1. `Browserizr::$is_ie8`
-1. `Browserizr::$is_ie9`
-1. `Browserizr::$is_ie10`
-1. `Browserizr::$is_ie11`
-1. `Browserizr::$is_ipad`
-1. `Browserizr::$is_ipod`
-1. `Browserizr::$is_iphone`
-1. `Browserizr::$is_windows_phone`
-1. `Browserizr::$is_moz`
-1. `Browserizr::$is_opera`
-1. `Browserizr::$is_safari`
-1. `Browserizr::$is_chrome`
-1. `Browserizr::$is_mobile`
-1. `Browserizr::$is_desktop`
+1. `Browserizr::detect()->isAndroid()`
+1. `Browserizr::detect()->isAndroid3()`
+1. `Browserizr::detect()->isAndroid4()`
+1. `Browserizr::detect()->isAndroid5()`
+1. `Browserizr::detect()->isAndroid6()`
+1. `Browserizr::detect()->isAndroid7()`
+1. `Browserizr::detect()->isAndroid8()`
+1. `Browserizr::detect()->isBlackberry()`
+1. `Browserizr::detect()->isBlackberry10()`
+1. `Browserizr::detect()->isEdge()`
+1. `Browserizr::detect()->isEdgeAndroid()`
+1. `Browserizr::detect()->isEdgeIOS()`
+1. `Browserizr::detect()->isIE()`
+1. `Browserizr::detect()->isIE8()`
+1. `Browserizr::detect()->isIE9()`
+1. `Browserizr::detect()->isIE10()`
+1. `Browserizr::detect()->isIE11()`
+1. `Browserizr::detect()->isIPad()`
+1. `Browserizr::detect()->isIPod()`
+1. `Browserizr::detect()->isIPhone()`
+1. `Browserizr::detect()->isWindowsPhone()`
+1. `Browserizr::detect()->isMoz()`
+1. `Browserizr::detect()->isOpera()`
+1. `Browserizr::detect()->isSafari()`
+1. `Browserizr::detect()->isChrome()`
+1. `Browserizr::detect()->isMobile()`
+1. `Browserizr::detect()->isDesktop()`
 
 _Usage examples:_
 
@@ -82,7 +69,7 @@ _Usage examples:_
 use WezomAgency\Browserizr;
 
 ?>
-<?php if (Browserizr::$is_chrome) { ?>
+<?php if (Browserizr::detect()->isChrome()) { ?>
     <div class="alert">Chrome is here, baby!!!</div>
 <?php } ?>
 
@@ -90,9 +77,9 @@ use WezomAgency\Browserizr;
 
 ---
 
-### Static methods
+### Generate css classes
 
-#### `add_classes($tests, $css_prefix = "")`
+#### `Browserizr::detect()->cssClasses($tests, $cssPrefix = "", $toString = true): array|string`
 
 > Create string with CSS classes
 
@@ -100,8 +87,9 @@ _Parameters:_
 
 Name | Data type | Default value | Description
  --- | --- | --- | ---
- `$tests` | `string[]` |  | array of wanted tests
- `$css_prefix` | `string` | `""` | custom prefix for CSS class name
+ `$tests` | `string[]` |  | array of wanted tests, each name - test name without `is` prefix
+ `$cssPrefix` | `string` | `""` | custom prefix for CSS class name
+ `$toString` | `bool` | `true` | implode resulted array and return as string;
  
 _Usage examples:_
 
@@ -112,7 +100,7 @@ use WezomAgency\Browserizr;
 
 ?>
 <!DOCTYPE html>
-<html class="<?= Browserizr::add_classes(['mobile', 'desktop']); ?>">
+<html class="<?= Browserizr::detect()->cssClasses(['Mobile', 'Desktop']); ?>">
     <head>...</head>
     <body>...</body>
 </html>
@@ -130,7 +118,7 @@ use WezomAgency\Browserizr;
 
 ?>
 <!DOCTYPE html>
-<html class="<?= Browserizr::add_classes(['mobile', 'desktop'], 'browserizr-'); ?>">
+<html class="<?= Browserizr::detect()->cssClasses(['Mobile', 'Desktop'], 'browserizr-'); ?>">
     <head>...</head>
     <body>...</body>
 </html>
@@ -141,29 +129,34 @@ use WezomAgency\Browserizr;
 
 ```
 
-#### `detect($custom_user_agent = null)`
+```php
+<?php
 
-> re-checkout all detections
+use WezomAgency\Browserizr;
 
-_Parameters:_
+$myCssClasses = Browserizr::detect()->cssClasses(['Mobile', 'Desktop'], '', false);
+// ... work with array, e.g. array_push() or array_combine() or whatever you want
 
-Name | Data type | Default value | Description
- --- | --- | --- | ---
- `$custom_user_agent` | `string` | `$_SERVER['HTTP_USER_AGENT']` | string for tests
+?>
+```
 
-_Usage examples:_
+### Set custom UserAgent
+
+by default Browserizr use `$_SERVER['HTTP_USER_AGENT']`  
+you can set own string for UserAgent.
+
+> **Note**  
+> if you needed to change agent - you must do it before use the Browserizr tests
 
 ```php
 <?php
 
 use WezomAgency\Browserizr;
 
-Browserizr::detect('my_user_agent')
+Browserizr::detect()->setUserAgent('my own UserAgent string');
 
-?>
-<?php if (Browserizr::$is_edge_ios) { ?>
-    <div class="alert">Edge is here, baby! Yes, on iOS!</div>
-<?php } ?>
+// then can test your browser correctly
+var_export(Browserizr::detect()->isWindowsPhone());
 
 ```
  
